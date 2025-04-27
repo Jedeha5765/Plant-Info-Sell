@@ -56,4 +56,19 @@ body {
     margin-bottom: 8px;
     line-height: 1.5;
   }
+
+button {
+    background-color: #5af278;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #6a924d;
+  }
   
