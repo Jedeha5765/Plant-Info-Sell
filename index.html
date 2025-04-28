@@ -28,6 +28,7 @@
       background-color: var(--bg-light);
       color: var(--text);
       line-height: 1.6;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff8c00' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     
     .container {
@@ -52,6 +53,14 @@
     .logo {
       font-size: 1.8rem;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo:before {
+      content: "✿";
+      margin-right: 8px;
+      color: var(--accent);
     }
     
     .logo span {
@@ -68,6 +77,22 @@
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-links a:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--bg-light);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
     }
     
     .nav-links a:hover {
@@ -84,12 +109,37 @@
       margin-bottom: 40px;
       border-radius: 0 0 12px 12px;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero:before, .hero:after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50'%3E%3Cpath fill='%23ff8c00' fill-opacity='0.1' d='M25,0C11.2,0,0,11.2,0,25s11.2,25,25,25s25-11.2,25-25S38.8,0,25,0z M25,40c-8.3,0-15-6.7-15-15s6.7-15,15-15s15,6.7,15,15S33.3,40,25,40z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    
+    .hero:before {
+      top: -50px;
+      left: -50px;
+    }
+    
+    .hero:after {
+      bottom: -50px;
+      right: -50px;
     }
     
     .hero h1 {
       font-size: 2.5rem;
       color: var(--primary-dark);
       margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
     }
     
     .hero p {
@@ -97,6 +147,8 @@
       max-width: 700px;
       margin-bottom: 30px;
       color: var(--text-light);
+      position: relative;
+      z-index: 1;
     }
     
     .hero-image {
@@ -106,51 +158,116 @@
       border-radius: 12px;
       box-shadow: var(--shadow);
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
     }
     
-    .care-sections {
+    .care-section {
+      margin-bottom: 80px;
+    }
+    
+    .care-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .care-title h2 {
+      font-size: 2rem;
+      color: var(--primary-dark);
+      display: inline-block;
+      padding: 0 15px;
+      background-color: var(--bg-light);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .care-title:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-light);
+      z-index: 1;
+    }
+    
+    .care-items {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      margin-bottom: 60px;
     }
     
-    .care-card {
+    .care-item {
       background-color: var(--bg-white);
       border-radius: 12px;
-      overflow: hidden;
+      padding: 30px;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
     
-    .care-card:hover {
+    .care-item:hover {
       transform: translateY(-5px);
     }
     
-    .care-header {
-      background-color: var(--primary);
-      color: white;
-      padding: 15px 20px;
-      font-size: 1.2rem;
-      font-weight: 600;
+    .care-item:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      z-index: 1;
     }
     
-    .care-content {
-      padding: 20px;
-    }
-    
-    .care-content h3 {
+    .care-item h3 {
       color: var(--primary-dark);
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
     }
     
-    .care-content ul {
+    .care-item h3:before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-right: 10px;
+    }
+    
+    .care-item ul {
       padding-left: 20px;
       margin-bottom: 15px;
     }
     
-    .care-content li {
-      margin-bottom: 8px;
+    .care-item li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 5px;
+    }
+    
+    .care-item li:before {
+      content: "✿";
+      color: var(--primary-light);
+      position: absolute;
+      left: -20px;
+      font-size: 0.9rem;
+    }
+    
+    .care-item p {
+      color: var(--text-light);
+    }
+    
+    .care-divider {
+      margin: 40px 0;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff8c00' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.7;
     }
     
     .btn {
@@ -165,11 +282,31 @@
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.6s ease;
+      z-index: -1;
+    }
+    
+    .btn:hover:before {
+      left: 100%;
     }
     
     .btn:hover {
       background-color: var(--primary-dark);
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     
     .btn-accent {
@@ -182,17 +319,54 @@
     
     .cta-section {
       background-color: var(--bg-white);
-      padding: 40px;
+      padding: 60px 40px;
       text-align: center;
       border-radius: 12px;
       box-shadow: var(--shadow);
       margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section:before, .cta-section:after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50'%3E%3Cpath fill='%234caf50' fill-opacity='0.1' d='M25,0C11.2,0,0,11.2,0,25s11.2,25,25,25s25-11.2,25-25S38.8,0,25,0z M25,40c-8.3,0-15-6.7-15-15s6.7-15,15-15s15,6.7,15,15S33.3,40,25,40z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    
+    .cta-section:before {
+      top: -100px;
+      left: -100px;
+    }
+    
+    .cta-section:after {
+      bottom: -100px;
+      right: -100px;
     }
     
     .cta-section h2 {
       color: var(--primary-dark);
       margin-bottom: 20px;
       font-size: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-section p {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+    
+    .cta-section .btn {
+      position: relative;
+      z-index: 1;
     }
     
     footer {
@@ -200,6 +374,17 @@
       color: white;
       padding: 30px 0;
       text-align: center;
+      position: relative;
+    }
+    
+    footer:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
     }
     
     @media (max-width: 768px) {
@@ -212,8 +397,12 @@
         font-size: 2rem;
       }
       
-      .care-sections {
+      .care-items {
         grid-template-columns: 1fr;
+      }
+      
+      .care-title h2 {
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -239,10 +428,14 @@
         <img src="Golden Marigolds.jpg" alt="Beautiful marigold flowers in bloom" class="hero-image">
       </section>
 
-      <div class="care-sections">
-        <div class="care-card">
-          <div class="care-header">Light Requirements</div>
-          <div class="care-content">
+      <section class="care-section">
+        <div class="care-title">
+          <h2>Essential Care Tips</h2>
+        </div>
+        
+        <div class="care-items">
+          <div class="care-item">
+            <h3>Light Requirements</h3>
             <ul>
               <li>Marigolds thrive in full sun</li>
               <li>Need at least 6 hours of direct sunlight daily</li>
@@ -250,11 +443,9 @@
               <li>In shady areas, marigolds become leggy with fewer flowers</li>
             </ul>
           </div>
-        </div>
 
-        <div class="care-card">
-          <div class="care-header">Water Requirements</div>
-          <div class="care-content">
+          <div class="care-item">
+            <h3>Water Requirements</h3>
             <ul>
               <li>Marigolds prefer moderate watering</li>
               <li>Water deeply once a week, allowing the top inch of soil to dry between waterings</li>
@@ -263,27 +454,27 @@
             </ul>
           </div>
         </div>
-
-        <div class="care-card">
-          <div class="care-header">Soil & Fertilizer</div>
-          <div class="care-content">
-            <h3>Soil:</h3>
+        
+        <div class="care-divider"></div>
+        
+        <div class="care-items">
+          <div class="care-item">
+            <h3>Soil & Fertilizer</h3>
+            <h4 style="color: var(--primary); margin: 15px 0 10px;">Soil:</h4>
             <ul>
               <li>Well-draining, loose soil with pH 6.0 to 7.0</li>
               <li>Mix in organic compost for nutrients and drainage</li>
             </ul>
-            <h3>Fertilizer:</h3>
+            <h4 style="color: var(--primary); margin: 15px 0 10px;">Fertilizer:</h4>
             <ul>
               <li>Minimal fertilizer needed — too much = fewer blooms</li>
               <li>Use balanced, slow-release fertilizer (10-10-10) once at planting</li>
               <li>Light monthly feed with diluted liquid fertilizer if necessary</li>
             </ul>
           </div>
-        </div>
 
-        <div class="care-card">
-          <div class="care-header">Common Issues & Fixes</div>
-          <div class="care-content">
+          <div class="care-item">
+            <h3>Common Issues & Fixes</h3>
             <ul>
               <li><strong>Powdery Mildew:</strong> White coating on leaves. Fix: Space plants, water base, use fungicide.</li>
               <li><strong>Aphids & Spider Mites:</strong> Tiny pests. Fix: Spray with water or use insecticidal soap.</li>
@@ -292,25 +483,37 @@
             </ul>
           </div>
         </div>
-
-        <div class="care-card">
-          <div class="care-header">Transplanting Tips</div>
-          <div class="care-content">
-            <h3>When to Transplant:</h3>
+        
+        <div class="care-divider"></div>
+        
+        <div class="care-items">
+          <div class="care-item">
+            <h3>Transplanting Tips</h3>
+            <h4 style="color: var(--primary); margin: 15px 0 10px;">When to Transplant:</h4>
             <ul>
               <li>When roots circle the pot (root-bound)</li>
               <li>When the plant outgrows its container</li>
               <li>When moving outdoors after the last frost</li>
             </ul>
-            <h3>Why This Works:</h3>
+            <h4 style="color: var(--primary); margin: 15px 0 10px;">Why This Works:</h4>
             <ul>
               <li>Dense roots benefit from more space</li>
               <li>Frost-sensitive — transplant after frost only</li>
               <li>Larger pots help with nutrient uptake and blooming</li>
             </ul>
           </div>
+          
+          <div class="care-item">
+            <h3>Seasonal Care</h3>
+            <ul>
+              <li><strong>Spring:</strong> Plant after last frost, water moderately as they establish</li>
+              <li><strong>Summer:</strong> Water more frequently during heat waves, deadhead spent blooms</li>
+              <li><strong>Fall:</strong> Reduce watering as temperatures cool, collect seeds for next year</li>
+              <li><strong>Winter:</strong> In warm zones, they may survive with protection; in colder areas, plan to replant in spring</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
 
       <section class="cta-section">
         <h2>Ready to Add Marigolds to Your Garden?</h2>
